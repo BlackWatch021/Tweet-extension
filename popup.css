@@ -2,12 +2,14 @@ body {
   min-width: 300px;
   min-height: 200px;
   border-radius: 20px;
+  background-color: rgb(169, 223, 244);
+  cursor: default;
 }
 
 textarea {
   border: none;
   outline: none;
-  background-color: skyblue;
+
   resize: none;
   text-indent: 10px;
   padding: 5px 10px;
@@ -16,5 +18,30 @@ textarea {
 
 .count {
   display: flex;
-  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.count > p {
+  height: 29px;
+  width: 29px;
+  line-height: 29px;
+  text-align: center;
+  border-radius: 50%;
+  border: 3px solid rgb(29, 155, 240);
+  font-size: 10pt;
+  margin: 0;
+}
+
+.count > button {
+  outline: none;
+  border: none;
+  height: 31px;
+  border-radius: 102px;
+  padding: 0px 26px;
+  background-color: rgb(29, 155, 240);
+  color: white;
+  margin-left: 17px;
+  font-size: 12pt;
+  cursor: pointer;
 }
