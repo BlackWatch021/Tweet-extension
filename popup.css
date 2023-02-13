@@ -13,3 +13,8 @@ textarea {
   padding: 5px 10px;
   border-radius: 10px;
 }
+
+.count {
+  display: flex;
+  width: 100%;
+}

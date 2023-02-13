@@ -1,60 +1,60 @@
 let btn = document.querySelector("button");
 
+let textArea = document.querySelector("#tweet");
+let hashtagsvalue = document.querySelector("#hashtags");
+
+textArea.addEventListener("input", count);
+hashtagsvalue.addEventListener("input", count);
+
 btn.addEventListener("click", () => {
-  let textArea = document.querySelector("textarea");
-  let tweet = "";
-  let hashtags = "";
-  //finding hashtags, removing from the tweets
-  // let str=textArea.value
-  let hashsplit = textArea.value.split(" ");
-  hashsplit.forEach((el) => {
-    if (el[0] === "#") {
-      if (hashtags === "") {
-        hashtags = el.slice(1);
-      } else {
-        hashtags = hashtags + "," + el.slice(1);
-      }
-      //   let index = hashsplit.indexOf(el);
-      //   hashsplit.splice(index, 1);
-    } else {
-      if (el.includes("#")) {
-        if (hashtags === "") {
-          hashtags = el.trim().slice(1);
+  if (textArea.value.length + hashtagsvalue.value.length > 279) {
+    console.log("Limit reached");
+  } else {
+    let textArea = document.querySelector("#tweet");
+    let hashtagsvalue = document.querySelector("#hashtags");
+    let tweet = "";
+    let hashtags = "";
+    //finding hashtags, removing from the tweets
+    let hashsplit = hashtagsvalue.value.split(" ");
+    hashsplit.map((el) => {
+      if (el !== "") {
+        if (el[0] === "#") {
+          if (hashtags === "") {
+            hashtags = el.slice(1);
+            el.s;
+          } else {
+            hashtags = hashtags + "," + el.slice(1);
+          }
+        } else if (hashtags === "") {
+          hashtags = el;
         } else {
-          hashtags = hashtags + "," + el.trimEnd().slice(1);
+          hashtags = hashtags + "," + el;
         }
-
-        let index = hashsplit.indexOf(el);
-        hashsplit.splice(index, 1);
       }
-    }
-  });
+    });
 
-  tweet = hashsplit.filter((el) => el.trim()[0] !== "#").join(" ");
+    hashtags.trim();
 
-  //finding hashtags
+    //finding hashtags
 
-  //   let twitterURL = `https://twitter.com/intent/tweet?text=${tweet}&hashtags=${hashtags}`;
-  //   window.open(twitterURL);
-  //   console.log(tweet);
-  //   console.log("hashtags", hashtags);
-  console.log("hashsplit", hashsplit);
-  //   console.log("tweet", tweet);
-  console.log("textArea.value", textArea.value);
+    let twitterURL = `https://twitter.com/intent/tweet?text=${textArea.value}&hashtags=${hashtags}`;
+    window.open(twitterURL);
+    //   console.log(tweet);
+    //   console.log("hashtags", hashtags);
+    console.log("hashsplit", hashsplit);
+    console.log("hashtags", hashtags);
+    //   console.log("tweet", tweet);
+    console.log("textArea.value", textArea.value);
+  }
 });
 
-// useEffect(()=>{
-//     let toFetch=async ()=>{
-//         // let response=await fetch('https://api.quotable.io/random');
-//         let response=await fetch('https://type.fit/api/quotes');
-//         let data=await response.json(); //returns an array of quotes
-//         setQuote(data);
-//         setLoad(false);
-//     }
-//     toFetch()
-// },[])
-
-// const twitte=()=>{
-//   let twitterURL=`https://twitter.com/intent/tweet?text=${quote[random].text}`
-//   window.open(twitterURL)
-// }
+function count() {
+  let countPara = document.querySelector("#count");
+  let length = textArea.value.length + hashtagsvalue.value.length;
+  countPara.innerHTML = length;
+  if (length === 280) {
+    countPara.innerHTML = 0;
+  } else if (length > 280) {
+    countPara.innerHTML = 280 - length;
+  }
+}

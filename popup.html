@@ -6,14 +6,24 @@
   <body>
     <h1>Tweet It</h1>
     <textarea
-      id="w3review"
+      id="tweet"
       name="tweet"
       rows="10"
       cols="50"
-      maxlength="280"
+      placeholder="Your tweet, please don't add hashtags here"
       autofocus
     ></textarea>
-    <button>tweet</button>
+    <textarea
+      id="hashtags"
+      name="hashtags"
+      rows="3"
+      cols="50"
+      placeholder="Add hashtags here, seperated by space i.e. #HastOne #HastTwo"
+    ></textarea>
+    <div class="count">
+      <p id="count">0</p>
+      <button>tweet</button>
+    </div>
     <script src="./popup.js"></script>
   </body>
 </html>
